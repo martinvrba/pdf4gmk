@@ -27,3 +27,17 @@ Tool that extracts a given number of pages from one / more PDF files, converts t
   ```sh
   docker run -v "$(pwd)":/app/output pdf4gmk -h
   ```
+
+### Example
+
+* Command:
+
+  ```sh
+  docker run -v "$(pwd)":/app/output pdf4gmk file1.pdf,file2.pdf,file3.pdf 4 --allign center --color 0,0,0
+  ```
+
+* Output:
+
+  ```sh
+  Output saved to: pdf4gmk_file1file2file3.pdf
+  ```
