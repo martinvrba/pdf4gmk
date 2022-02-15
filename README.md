@@ -33,7 +33,7 @@ Tool that extracts a given number of pages from one / more PDF files, converts t
 * Command:
 
   ```sh
-  docker run -v "$(pwd)":/app/output pdf4gmk file1.pdf,file2.pdf,file3.pdf 4 --allign center --color 0,0,0
+  docker run -v "$(pwd)":/app/output pdf4gmk file1.pdf,file2.pdf,file3.pdf 4 --align center --color 0,0,0
   ```
 
 * Output:

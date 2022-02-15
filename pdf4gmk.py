@@ -10,7 +10,7 @@ from uuid import uuid4
 def concatenate_images_to_pdf(
     images,
     background_color,
-    allign,
+    align,
     output_pdf_filename
 ):
     images_to_concatenate = list()
@@ -31,11 +31,11 @@ def concatenate_images_to_pdf(
     )
     image_index = 0
     for image in images_to_concatenate:
-        if allign == "left":
+        if align == "left":
             x_pos = 0
-        elif allign == "center":
+        elif align == "center":
             x_pos = round((output_pdf_width - widths[image_index]) / 2)
-        elif allign == "right":
+        elif align == "right":
             x_pos = output_pdf_width - widths[image_index]
         y_pos = 0 if image_index == 0 else sum(heights[0:image_index])
         output_pdf.paste(image, (x_pos, y_pos))
@@ -81,11 +81,11 @@ if __name__ == "__main__":
         help="number of pages to extract from the PDFs",
     )
     parser.add_argument(
-        "--allign",
+        "--align",
         default="left",
         type=str,
         required=False,
-        help="page allignment (left, center or right)"
+        help="page alignment (left, center or right)"
     )
     parser.add_argument(
         "--color",
@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
     pdfs = args.pdfs.split(",")
     bg_color = tuple((int(_) for _ in args.color.split(",")))
-    allign = args.allign.lower()
+    align = args.align.lower()
     output_pdf_filename = \
         "pdf4gmk_" + \
         "".join([splitext(_)[0] for _ in pdfs]) + \
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     concatenate_images_to_pdf(
         tmp_images,
         bg_color,
-        allign,
+        align,
         output_pdf_filename
     )
     print(f"Output saved to: {output_pdf_filename}")
